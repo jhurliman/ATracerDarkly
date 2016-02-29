@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9F15271E1C7F8A0E00F784DC /* RayScheduler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15271D1C7F8A0E00F784DC /* RayScheduler.swift */; };
+		9F1527201C7F8A8200F784DC /* Camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15271F1C7F8A8200F784DC /* Camera.swift */; };
+		9F1527221C7F8C3000F784DC /* HitRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1527211C7F8C3000F784DC /* HitRecord.swift */; };
+		9F1527241C7F8EFA00F784DC /* Sphere.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1527231C7F8EFA00F784DC /* Sphere.swift */; };
+		9F1527281C7F9C0A00F784DC /* RayScheduler.metal in Sources */ = {isa = PBXBuildFile; fileRef = 9F1527271C7F9C0A00F784DC /* RayScheduler.metal */; };
+		9F15272E1C7FB61500F784DC /* World.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15272D1C7FB61500F784DC /* World.swift */; };
+		9F1527301C7FB65200F784DC /* Hittable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F15272F1C7FB65200F784DC /* Hittable.swift */; };
+		9F1527381C7FF9E400F784DC /* RayProjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1527371C7FF9E400F784DC /* RayProjector.swift */; };
+		9F15273A1C80107C00F784DC /* MemoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F1527391C80107C00F784DC /* MemoryManager.swift */; };
+		9F15275D1C81173B00F784DC /* RayCollider.metal in Sources */ = {isa = PBXBuildFile; fileRef = 9F15275C1C81173B00F784DC /* RayCollider.metal */; };
 		9F17FE0F1C7E834A008E5046 /* Timer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F17FE0E1C7E834A008E5046 /* Timer.swift */; };
 		9F98DDC71C7E36360001FAB7 /* noise3D.metal in Sources */ = {isa = PBXBuildFile; fileRef = 9F98DDC61C7E36360001FAB7 /* noise3D.metal */; };
 		9F9D73A71C7D026E0011559B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9F9D73A61C7D026E0011559B /* AppDelegate.swift */; };
@@ -44,6 +54,21 @@
 
 /* Begin PBXFileReference section */
 		9F15271C1C7EEE6F00F784DC /* boxMuller.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = boxMuller.h; sourceTree = "<group>"; };
+		9F15271D1C7F8A0E00F784DC /* RayScheduler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RayScheduler.swift; sourceTree = "<group>"; };
+		9F15271F1C7F8A8200F784DC /* Camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Camera.swift; sourceTree = "<group>"; };
+		9F1527211C7F8C3000F784DC /* HitRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HitRecord.swift; sourceTree = "<group>"; };
+		9F1527231C7F8EFA00F784DC /* Sphere.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sphere.swift; sourceTree = "<group>"; };
+		9F1527271C7F9C0A00F784DC /* RayScheduler.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = RayScheduler.metal; sourceTree = "<group>"; };
+		9F15272B1C7F9C7C00F784DC /* Ray.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Ray.h; sourceTree = "<group>"; };
+		9F15272C1C7F9D6F00F784DC /* Camera.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Camera.h; sourceTree = "<group>"; };
+		9F15272D1C7FB61500F784DC /* World.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = World.swift; sourceTree = "<group>"; };
+		9F15272F1C7FB65200F784DC /* Hittable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hittable.swift; sourceTree = "<group>"; };
+		9F1527331C7FC2CF00F784DC /* HitRecord.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HitRecord.h; sourceTree = "<group>"; };
+		9F1527341C7FC57000F784DC /* Material.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Material.h; sourceTree = "<group>"; };
+		9F1527371C7FF9E400F784DC /* RayProjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RayProjector.swift; sourceTree = "<group>"; };
+		9F1527391C80107C00F784DC /* MemoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemoryManager.swift; sourceTree = "<group>"; };
+		9F15275C1C81173B00F784DC /* RayCollider.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = RayCollider.metal; sourceTree = "<group>"; };
+		9F15275E1C81177400F784DC /* Sphere.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Sphere.h; sourceTree = "<group>"; };
 		9F17FE0E1C7E834A008E5046 /* Timer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Timer.swift; sourceTree = "<group>"; };
 		9F98DDC61C7E36360001FAB7 /* noise3D.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = noise3D.metal; sourceTree = "<group>"; };
 		9F98DDC81C7E36BD0001FAB7 /* noise3D.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = noise3D.h; sourceTree = "<group>"; };
@@ -126,6 +151,12 @@
 			children = (
 				9F9D73CE1C7D38BC0011559B /* float3-Utils.swift */,
 				9F9D73CC1C7D2FBB0011559B /* Ray.swift */,
+				9F15271F1C7F8A8200F784DC /* Camera.swift */,
+				9F1527211C7F8C3000F784DC /* HitRecord.swift */,
+				9F1527231C7F8EFA00F784DC /* Sphere.swift */,
+				9F15272D1C7FB61500F784DC /* World.swift */,
+				9F15272F1C7FB65200F784DC /* Hittable.swift */,
+				9F1527371C7FF9E400F784DC /* RayProjector.swift */,
 			);
 			path = DataStructures;
 			sourceTree = "<group>";
@@ -134,9 +165,18 @@
 			isa = PBXGroup;
 			children = (
 				9F15271C1C7EEE6F00F784DC /* boxMuller.h */,
+				9F15272C1C7F9D6F00F784DC /* Camera.h */,
+				9F1527331C7FC2CF00F784DC /* HitRecord.h */,
+				9F1527341C7FC57000F784DC /* Material.h */,
+				9F1527391C80107C00F784DC /* MemoryManager.swift */,
 				9F98DDC81C7E36BD0001FAB7 /* noise3D.h */,
 				9F98DDC61C7E36360001FAB7 /* noise3D.metal */,
+				9F15272B1C7F9C7C00F784DC /* Ray.h */,
+				9F15275C1C81173B00F784DC /* RayCollider.metal */,
+				9F1527271C7F9C0A00F784DC /* RayScheduler.metal */,
+				9F15271D1C7F8A0E00F784DC /* RayScheduler.swift */,
 				9F9D73D41C7DC3BA0011559B /* Raytracer.metal */,
+				9F15275E1C81177400F784DC /* Sphere.h */,
 			);
 			path = Raytracer;
 			sourceTree = "<group>";
@@ -242,13 +282,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F15275D1C81173B00F784DC /* RayCollider.metal in Sources */,
+				9F15271E1C7F8A0E00F784DC /* RayScheduler.swift in Sources */,
+				9F15272E1C7FB61500F784DC /* World.swift in Sources */,
+				9F15273A1C80107C00F784DC /* MemoryManager.swift in Sources */,
+				9F1527381C7FF9E400F784DC /* RayProjector.swift in Sources */,
 				9F9D73CF1C7D38BC0011559B /* float3-Utils.swift in Sources */,
+				9F1527281C7F9C0A00F784DC /* RayScheduler.metal in Sources */,
 				9F9D73A91C7D026E0011559B /* GameViewController.swift in Sources */,
 				9F9D73D51C7DC3BA0011559B /* Raytracer.metal in Sources */,
 				9F98DDC71C7E36360001FAB7 /* noise3D.metal in Sources */,
+				9F1527241C7F8EFA00F784DC /* Sphere.swift in Sources */,
+				9F1527301C7FB65200F784DC /* Hittable.swift in Sources */,
 				9F9D73A71C7D026E0011559B /* AppDelegate.swift in Sources */,
 				9F9D73CD1C7D2FBB0011559B /* Ray.swift in Sources */,
 				9F17FE0F1C7E834A008E5046 /* Timer.swift in Sources */,
+				9F1527221C7F8C3000F784DC /* HitRecord.swift in Sources */,
+				9F1527201C7F8A8200F784DC /* Camera.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -367,10 +417,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ATracerDarkly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.jhurliman.ATracerDarkly;
@@ -383,10 +430,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/Mac",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = ATracerDarkly/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = org.jhurliman.ATracerDarkly;
