@@ -211,7 +211,7 @@ static float3 randInUnitSphere(thread int3& seed)
 
 static float3 color(Ray ray, SphereList world, thread int3& seed)
 {
-    const int MAX_HITS = 3;
+    const int MAX_HITS = 4;
     
     HitRecord stack[MAX_HITS];
     int hitIndex = 0;
@@ -256,7 +256,7 @@ kernel void raytrace(/*texture2d<float, access::read> inTexture [[ texture(0) ]]
                      constant FrameParameters &frameInfo [[buffer(0)]],
                      uint2 gid [[ thread_position_in_grid ]])
 {
-    const int NUM_SAMPLES = 1;
+    const int NUM_SAMPLES = 4;
     
     SphereList world = SphereList(4);
     Camera camera;
@@ -270,6 +270,8 @@ kernel void raytrace(/*texture2d<float, access::read> inTexture [[ texture(0) ]]
         
         Ray ray = camera.getRay(uv);
         c += color(ray, world, seed);
+        
+        seed.xy += 1;
     }
     c /= NUM_SAMPLES;
     
