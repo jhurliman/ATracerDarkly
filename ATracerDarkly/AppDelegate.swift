@@ -13,15 +13,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBOutlet weak var window: NSWindow!
     
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
+    func applicationWillTerminate(_ aNotification: Notification) {
         
     }
     
-    func applicationShouldTerminateAfterLastWindowClosed(sender: NSApplication) -> Bool {
+    func applicationShouldTerminateAfterLastWindowClosed(_ sender: NSApplication) -> Bool {
         return true
     }
     

@@ -117,14 +117,12 @@ struct Sphere {
     float3 center;
     float radius;
     Material material;
-    thread Material* materialPtr;
     
     Sphere(float3 center, float radius, Material material):
         center(center),
         radius(radius),
         material(material)
     {
-        materialPtr = &material;
     }
     
     bool hit(Ray ray, float tmin, float tmax, thread HitRecord& rec) {
@@ -139,14 +137,14 @@ struct Sphere {
         float temp = (-b - d) / a;
         if (temp < tmax && temp > tmin) {
             float3 p = ray.pointAtParameter(temp);
-            rec = HitRecord(temp, p, (p - center) / radius, materialPtr);
+            rec = HitRecord(temp, p, (p - center) / radius, &material);
             return true;
         }
         
         temp = (-b + d) / a;
         if (temp < tmax && temp > tmin) {
             float3 p = ray.pointAtParameter(temp);
-            rec = HitRecord(temp, p, (p - center) / radius, materialPtr);
+            rec = HitRecord(temp, p, (p - center) / radius, &material);
             return true;
         }
         
@@ -174,7 +172,7 @@ struct SphereList {
         float closestSoFar = tmax;
         
         for (int i = 0; i < count; i++) {
-            Sphere sphere = spheres[i];
+            Sphere& sphere = spheres[i];
             if (sphere.hit(ray, tmin, closestSoFar, tempRec)) {
                 hitAnything = true;
                 closestSoFar = tempRec.t;

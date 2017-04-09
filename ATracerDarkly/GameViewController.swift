@@ -22,7 +22,7 @@ class GameViewController: NSViewController, MTKViewDelegate {
     var computePipelineState: MTLComputePipelineState! = nil
     var bufferIndex = 0
     var curFrame: UInt32 = 0
-    let inflightSemaphore = dispatch_semaphore_create(MaxBuffers)
+    let inflightSemaphore = DispatchSemaphore(value: MaxBuffers)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,11 +46,11 @@ class GameViewController: NSViewController, MTKViewDelegate {
         let view = self.view as! MTKView
         view.framebufferOnly = false
         
-        commandQueue = device.newCommandQueue()
+        commandQueue = device.makeCommandQueue()
         commandQueue.label = "main command queue"
         
         let defaultLibrary = device.newDefaultLibrary()!
-        let raytracer = defaultLibrary.newFunctionWithName("raytrace")!
+        let raytracer = defaultLibrary.makeFunction(name: "raytrace")!
         
         let computePipelineDescriptor = MTLComputePipelineDescriptor()
         computePipelineDescriptor.label = "raytracer"
@@ -58,23 +58,23 @@ class GameViewController: NSViewController, MTKViewDelegate {
         computePipelineDescriptor.threadGroupSizeIsMultipleOfThreadExecutionWidth = true
         
         do {
-            computePipelineState = try device.newComputePipelineStateWithDescriptor(
-                computePipelineDescriptor, options: .None, reflection: nil)
+            computePipelineState = try device.makeComputePipelineState(
+                descriptor: computePipelineDescriptor, options: MTLPipelineOption(), reflection: nil)
         } catch {
             print("Failed to create pipeline state, error \(error)")
         }
     }
     
-    func drawInMTKView(view: MTKView) {
+    func draw(in view: MTKView) {
         // use semaphore to encode 3 frames ahead
-        dispatch_semaphore_wait(inflightSemaphore, DISPATCH_TIME_FOREVER)
+        let _ = inflightSemaphore.wait(timeout: DispatchTime.distantFuture)
         
         var timer = Timer()
         timer.start()
         
 //        self.update()
         
-        let commandBuffer = commandQueue.commandBuffer()
+        let commandBuffer = commandQueue.makeCommandBuffer()
         commandBuffer.label = "Frame command buffer"
         
         // use completion handler to signal the semaphore when this frame is completed allowing the
@@ -83,27 +83,28 @@ class GameViewController: NSViewController, MTKViewDelegate {
         // besides this stack frame
         commandBuffer.addCompletedHandler{ [weak self] commandBuffer in
             if let strongSelf = self {
-                dispatch_semaphore_signal(strongSelf.inflightSemaphore)
+                strongSelf.inflightSemaphore.signal()
             }
         }
         
         if let currentDrawable = view.currentDrawable {
-            let commandEncoder = commandBuffer.computeCommandEncoder()
+            let commandEncoder = commandBuffer.makeComputeCommandEncoder()
             
             let outputTexture = currentDrawable.texture
             
             commandEncoder.setComputePipelineState(computePipelineState)
             commandEncoder.label = "compute encoder"
             
-            commandEncoder.setTexture(outputTexture, atIndex: 0)
+            commandEncoder.setTexture(outputTexture, at: 0)
             //commandEncoder.setTexture(outputTexture, atIndex: 1)
             // FIXME: Pass the scene graph in as an argument
 //            commandEncoder.setBuffer(world, offset: 0, atIndex: 0)
-            
-            var frameInfo = FrameParameters(frameNumber: ++curFrame)
-            let buffer: MTLBuffer = device.newBufferWithBytes(
-                &frameInfo, length: sizeof(FrameParameters), options: .StorageModeShared)
-            commandEncoder.setBuffer(buffer, offset: 0, atIndex: 0)
+          
+            curFrame += 1
+            var frameInfo = FrameParameters(frameNumber: curFrame)
+            let buffer: MTLBuffer = device.makeBuffer(
+                bytes: &frameInfo, length: MemoryLayout<FrameParameters>.size, options: MTLResourceOptions())
+            commandEncoder.setBuffer(buffer, offset: 0, at: 0)
             
             let threadGroupCount = MTLSizeMake(8, 8, 1)
             let threadGroups = MTLSizeMake(
@@ -114,7 +115,7 @@ class GameViewController: NSViewController, MTKViewDelegate {
             commandEncoder.dispatchThreadgroups(threadGroups, threadsPerThreadgroup: threadGroupCount)
             commandEncoder.endEncoding()
             
-            commandBuffer.presentDrawable(currentDrawable)
+            commandBuffer.present(currentDrawable)
         }
         
         // bufferIndex matches the current semaphore controled frame index to ensure writing occurs
@@ -128,7 +129,7 @@ class GameViewController: NSViewController, MTKViewDelegate {
     }
     
     
-    func mtkView(view: MTKView, drawableSizeWillChange size: CGSize) {
+    func mtkView(_ view: MTKView, drawableSizeWillChange size: CGSize) {
         
     }
 }
